@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  walmart-api-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: walart-api-service:latest
+    container_name: walmart-api-service
+    ports:
+      - "3111:3111"
+    volumes:
+      - ./keys:/app/keys:ro
+    env_file:
+      - .env
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
