@@ -9,6 +9,7 @@ export const FullSearchQuerySchema = z.object({
     .describe('Sort by attribute (e.g., price, title)'),
   order: z.enum(['asc', 'desc']).nullable().optional().describe('Sort order'),
   numItems: z
+    .coerce
     .number()
     .int()
     .min(1)
@@ -17,6 +18,7 @@ export const FullSearchQuerySchema = z.object({
     .optional()
     .describe('Number of items to return'),
   start: z
+    .coerce
     .number()
     .int()
     .min(1)
@@ -36,6 +38,7 @@ export const FullSearchQuerySchema = z.object({
 export const SimpleSearchQuerySchema = z.object({
   product: z.string().nonempty().describe('Product to search for'),
   numItems: z
+    .coerce
     .number()
     .int()
     .min(1)
@@ -45,6 +48,7 @@ export const SimpleSearchQuerySchema = z.object({
     .default(24)
     .describe('Number of items to return'),
   start: z
+    .coerce
     .number()
     .int()
     .min(1)
